@@ -1,0 +1,17 @@
+<!-- templates/home.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+</head>
+<body>
+    {% if user %}
+        <h1>Hello, {{ user }}!</h1>
+        <a href="/logout">Logout</a>
+    {% else %}
+        <h1>You are not logged in.</h1>
+        <a href="/login">Login</a> |
+        <a href="/signup">Signup</a>
+    {% endif %}
+</body>
+</html>
