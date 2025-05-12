@@ -1,19 +1,67 @@
-.home {
-  text-align: center;
-  padding: 80px 20px;
+.home-container {
+  display: flex;
+  background-color: #fef6ec;
+  padding: 10px;
+  flex-direction: column;
+  align-items: center;
 }
 
-
-.home-button {
-  padding: 10px 20px;
-  font-size: 1rem;
-  background-color: #282c34;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
+.welcome-text {
+  font-size: 34px;
+  font-family: 'Bagel Fat One', system-ui;
+  font-weight: normal;
+  color: #ff8800;
+  align-self: flex-start;
 }
 
-.home-button:hover {
-  background-color: #444;
+.carousel-container {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto 40px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.carousel-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  opacity: 1;
+  transition: opacity 1.5s ease-in-out;
+}
+
+.fade-out {
+  opacity: 0.1;
+}
+
+.fade-in {
+  opacity: 1;
+}
+
+.sections {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.section-box {
+  background-color: white;
+  width: 340px;
+  height: 260px;
+  border-radius: 20px;
+  text-decoration: none;
+  color: black;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 20px;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+.section-box:hover {
+  transform: translateY(-5px);
 }
