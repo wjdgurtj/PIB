@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './styles/App.css';
 import Header from './components/Header';
+import Footer from './components/Footer';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
@@ -28,6 +29,7 @@ function App() {
           <Route path='/popular-posts' element={<PopularPosts />} />
           <Route path='/my-posts' element={<MyPosts />} />
         </Routes>
+        <Footer />
       </div>
     </Router>
   );
