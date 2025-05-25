@@ -6,9 +6,34 @@ function Login() {
   const [id, setId] = useState('');
   const [pw, setPw] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert(`ID: ${id}, PW: ${pw}`);
+
+    try {
+      const response = await fetch("http://localhost:8000/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          username: id,
+          password: pw
+        })
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        alert(`${data.nickname}님 환영합니다!`);
+        // ✅ 로그인 성공 후 원하는 페이지로 이동하거나 토큰 저장 등 처리 가능
+        // 예: window.location.href = '/home';
+      } else {
+        const errorData = await response.json();
+        alert(errorData.detail || "로그인 실패");
+      }
+
+    } catch (err) {
+      alert("서버 연결 실패");
+    }
   };
 
   return (

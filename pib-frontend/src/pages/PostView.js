@@ -76,6 +76,7 @@ function PostView() {
             </div>
           </div>
 
+          <hr className="divider" />
           <div className="reactions">
             <div className="like-button" onClick={handleLike}>
               <FaHeart color={liked ? 'red' : 'lightgray'} />
@@ -86,8 +87,6 @@ function PostView() {
               <span>{comments.length}</span>
             </div>
           </div>
-
-          <hr className="divider" />
 
           <div className="comments">
             {comments.map((comment, idx) => (
