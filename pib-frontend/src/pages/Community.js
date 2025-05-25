@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import '../styles/Community.css';
 import pibLogo from '../assets/piblogo.png';
 import background from '../assets/background.png'
+import { Link } from 'react-router-dom';
+
+
 
 function Community() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -99,85 +102,85 @@ const contents = [
     minHeight: '100vh',
   }}>
 
-    <div className= "community-wrapper">
-          <div className="community-container" >
-      <h2 className="board-title">Q&amp;A 게시판</h2>
+      <div className= "community-wrapper">
+        <div className="community-container" >
+          <h2 className="board-title">Q&amp;A 게시판</h2>
 
-      <div className="search-bar">
-        <input
-          type="text"
-          placeholder="검색어를 입력하세요"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-        <button className="search-button" onClick={handleSearch}>검색</button>
-        <button className="write-button">글쓰기</button>
-      </div>
+          <div className="search-bar">
+            <input
+              type="text"
+              placeholder="검색어를 입력하세요"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            <button className="search-button" onClick={handleSearch}>검색</button>
+            <Link to="/writepost"><button className="write-button">글쓰기</button></Link>
+          </div>
 
-      <div className="sort-options">
-        <label>
-          <input
-            type="radio"
-            name="sort"
-            checked={sortType === 'latest'}
-            onChange={() => setSortType('latest')}
-          />
-          최신순
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="sort"
-            checked={sortType === 'popular'}
-            onChange={() => setSortType('popular')}
-          />
-          인기순
-        </label>
-      </div>
+          <div className="sort-options">
+            <label>
+              <input
+                type="radio"
+                name="sort"
+                checked={sortType === 'latest'}
+                onChange={() => setSortType('latest')}
+              />
+              최신순
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="sort"
+                checked={sortType === 'popular'}
+                onChange={() => setSortType('popular')}
+              />
+              인기순
+            </label>
+          </div>
 
-      <div className="post-header">
-        <div className="post-header-left">내용</div>
-        <div className="post-header-right">
-          <div>날짜</div>
-          <div>조회수</div>
-        </div>
-      </div>
-
-      <div className="post-list">
-        {currentPosts.map((post) => (
-          <div className="post-item" key={post.id}>
-            <div className="post-left">
-              <div className="post-title">{post.title}</div>
-              <div className="post-content">{post.content}</div>
-              <div className="post-footer">{post.author}</div>
-            </div>
-            <div className="post-right">
-              <img src={pibLogo} alt="썸네일" className="thumbnail" />
-              <div className="post-meta">
-                <div className="meta-date">{post.date}</div>
-                <div className="meta-views">{post.views}</div>
-              </div>
+          <div className="post-header">
+            <div className="post-header-left">내용</div>
+            <div className="post-header-right">
+              <div>날짜</div>
+              <div>조회수</div>
             </div>
           </div>
-        ))}
-      </div>
 
-      <div className="pagination">
-        <span onClick={() => handlePageClick(Math.max(1, currentPage - 1))}>&lt;</span>
-        {[...Array(totalPages)].map((_, i) => (
-          <span
-            key={i}
-            onClick={() => handlePageClick(i + 1)}
-            className={currentPage === i + 1 ? 'active' : ''}
-          >
-            {i + 1}
-          </span>
-        ))}
-        <span onClick={() => handlePageClick(Math.min(totalPages, currentPage + 1))}>&gt;</span>
-      </div>
-    </div>
+          <div className="post-list">
+            {currentPosts.map((post) => (
+              <div className="post-item" key={post.id}>
+                <div className="post-left">
+                  <Link to="/postview"><div className="post-title">{post.title}</div></Link>
+                  <div className="post-content">{post.content}</div>
+                  <div className="post-footer">{post.author}</div>
+                </div>
+                <div className="post-right">
+                  <img src={pibLogo} alt="썸네일" className="thumbnail" />
+                  <div className="post-meta">
+                    <div className="meta-date">{post.date}</div>
+                    <div className="meta-views">{post.views}</div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
 
-    </div>
+          <div className="pagination">
+            <span onClick={() => handlePageClick(Math.max(1, currentPage - 1))}>&lt;</span>
+            {[...Array(totalPages)].map((_, i) => (
+              <span
+                key={i}
+                onClick={() => handlePageClick(i + 1)}
+                className={currentPage === i + 1 ? 'active' : ''}
+              >
+                {i + 1}
+              </span>
+            ))}
+            <span onClick={() => handlePageClick(Math.min(totalPages, currentPage + 1))}>&gt;</span>
+          </div>
+        </div>
+
+      </div>
     </div>
   );
 }

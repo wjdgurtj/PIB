@@ -29,6 +29,9 @@ function Footer() {
           </a> &nbsp;|&nbsp;
           <a href="https://github.com/wjdgurtj" target="_blank" rel="noopener noreferrer">
             wjdgurtj
+          </a>&nbsp;|&nbsp;
+          <a href="https://github.com/jungjunsoo" target="_blank" rel="noopener noreferrer">
+            jungjunsoo
           </a>
         </p>
       </div>
