@@ -15,20 +15,45 @@ function Signup() {
     setForm({ ...form, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (form.password !== form.confirmPassword) {
       alert("비밀번호가 일치하지 않습니다.");
       return;
     }
-    alert(`회원가입 정보: ${JSON.stringify(form, null, 2)}`);
+
+    try {
+      const response = await fetch("http://localhost:8000/api/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          username: form.id,
+          password: form.password,
+          nickname: form.nickname,
+          phone: form.phone
+        })
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert("회원가입 성공!");
+        // TODO: 로그인 페이지 이동
+      } else {
+        alert("회원가입 실패: " + data.detail);
+      }
+    } catch (error) {
+      alert("에러 발생: " + error.message);
+    }
   };
 
   return (
     <div className="signup-container">
       <form className="signup-box" onSubmit={handleSubmit}>
         <h2>회원가입</h2>
-        
+
         <label>아이디</label>
         <input type="text" name="id" value={form.id} onChange={handleChange} required />
 
