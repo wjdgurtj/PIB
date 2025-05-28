@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ post.title }}</title>
+</head>
+<body>
+    <h1>{{ post.title }}</h1>
+    <p>{{ post.content }}</p>
+    <p><small>작성일: {{ post.created_at }}</small></p>
+    <hr>
+    <h2>댓글</h2>
+    <ul>
+        {% for comment in comments %}
+            <li>{{ comment.content }} - <small>{{ comment.created_at }}</small></li>
+        {% else %}
+            <li>댓글이 없습니다.</li>
+        {% endfor %}
+    </ul>
+
+  <h3>댓글 작성</h3>
+<form action="/posts/{{ post.id }}/comments/form" method="post">
+    <textarea name="content" rows="4" cols="50" required></textarea><br><br>
+    <button type="submit">댓글 등록</button>
+</form>
+

@@ -1,0 +1,138 @@
+.write-post-container {
+  max-width: 800px;
+  margin: auto;
+  padding: 40px;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.write-post-container h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.container-wrapper{
+  padding-top: 20px;
+  padding-bottom: 60px;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+.input-group input,
+.input-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  font-size: 14px;
+}
+
+.image-upload-section {
+  margin-top: 30px;
+}
+
+.image-upload-section label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.image-boxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.image-box {
+  width: 100px;
+  height: 100px;
+  background-color: #f4f4f4;
+  border: 1px dashed #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.image-box input {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.image-box.add {
+  cursor: pointer;
+  font-size: 30px;
+  color: #aaa;
+  font-weight: 300;
+}
+
+button[type="submit"] {
+  margin-top: 30px;
+  padding: 12px 20px;
+  background-color: #ff7f00;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button[type="submit"]:hover {
+  background-color: #e36f00;
+}
+
+.image-box.preview {
+  position: relative;
+  overflow: hidden;
+}
+
+.image-box.preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.delete-btn {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  font-size: 16px;
+  cursor: pointer;
+  line-height: 1;
+  text-align: center;
+}
+
+.image-box.add {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  color: #aaa;
+  font-weight: 300;
+  cursor: pointer;
+  position: relative;
+}

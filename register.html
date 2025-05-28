@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>회원가입</title>
+</head>
+<body>
+    <h1>회원가입</h1>
+    <form action="/register/form" method="post">
+        <label for="username">아이디:</label>
+        <input type="text" name="username" required><br><br>
+        
+        <label for="email">이메일:</label>
+        <input type="email" name="email" required><br><br>
+        
+        <label for="password">비밀번호:</label>
+        <input type="password" name="password" required><br><br>
+        
+        <button type="submit">회원가입</button>
+    </form>
+    <p><a href="/login">로그인</a> 하러 가기</p>
+</body>
+</html>

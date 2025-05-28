@@ -7,7 +7,6 @@ function Login() {
   const [pw, setPw] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate(); // 로그인 성공 후 페이지 이동
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(""); // 에러 초기화
@@ -25,12 +24,12 @@ function Login() {
       if (data.success) {  // ✅ `data.success`가 True인지 확인
         alert("로그인 성공!");
         localStorage.setItem("user", JSON.stringify(data.user)); // ✅ 사용자 정보 저장
-        navigate("/dashboard"); // 로그인 성공 시 페이지 이동
+        navigate("/"); // 로그인 성공 시 페이지 이동
       } else {
         setError(data.error || "아이디 또는 비밀번호가 잘못되었습니다.");
       }
     } catch (error) {
-      setError("서버 오류가 발생했습니다.");
+      setError("서버 오류가 발생했습니다.")
     }
   };
 
