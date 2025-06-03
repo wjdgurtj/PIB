@@ -61,3 +61,15 @@
 .header__button:hover {
   background-color: #f5f5f5;
 }
+
+.header__welcome {
+  font-size: 1rem;            /* 글자 크기 */
+  font-weight: 500;           /* 굵기 */
+  color: #fff;                /* 글자 색상 (흰색) */
+  background-color: #ff8800;  /* 배경색 (초록) */
+  padding: 0.25rem 0.9rem;   /* 위아래 0.25rem, 좌우 0.75rem */
+  border-radius: 0.5rem;        /* 둥근 모서리 */
+  margin-right: 1rem;         /* 우측 여백 */
+  display: inline-block;      /* 배경이 적용되도록 inline-block */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);  /* 살짝 그림자 */
+}
