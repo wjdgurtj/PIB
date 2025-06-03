@@ -1,38 +1,38 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import '../styles/Login.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 
 function Login() {
   const [id, setId] = useState('');
   const [pw, setPw] = useState('');
-
+  const [error, setError] = useState('');
+  const navigate = useNavigate(); // 로그인 성공 후 페이지 이동
+  const { login } = useContext(AuthContext);
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError(""); // 에러 초기화
 
     try {
-      const response = await fetch("http://localhost:8000/api/login", {
+      const response = await fetch("http://127.0.0.1:8000/api/login", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          username: id,
-          password: pw
-        })
+        headers: { "Content-Type": "application/json" }, // ✅ JSON 형식으로 변경
+        body: JSON.stringify({ username: id, password: pw }), // ✅ JSON 데이터 전송
       });
 
-      if (response.ok) {
-        const data = await response.json();
-        alert(`${data.nickname}님 환영합니다!`);
-        // ✅ 로그인 성공 후 원하는 페이지로 이동하거나 토큰 저장 등 처리 가능
-        // 예: window.location.href = '/home';
-      } else {
-        const errorData = await response.json();
-        alert(errorData.detail || "로그인 실패");
-      }
+      const data = await response.json();
+      console.log("백엔드 응답 데이터:", data);  // ✅ 응답 확인!
 
-    } catch (err) {
-      alert("서버 연결 실패");
+      if (response.ok) {  // ✅ `data.success`가 True인지 확인
+        alert("로그인 성공!");
+        localStorage.setItem("user", JSON.stringify({username: id, nickname: data.nickname})); // ✅ 사용자 정보 저장
+        login({ username: id, nickname: data.nickname });
+        navigate("/"); // 로그인 성공 시 페이지 이동
+      } else {
+        setError(data.detail || data.message);
+      }
+    } catch (error) {
+      setError("서버 오류가 발생했습니다.")
     }
   };
 
@@ -57,6 +57,7 @@ function Login() {
               onChange={(e) => setPw(e.target.value)} 
             />
           </div>
+          {error && <p className="error-text">{error}</p>} {/* 에러 메시지 표시 */}
           <button type="submit" className="login-button">로그인</button>
         </form>
         <p className="signup-text">
